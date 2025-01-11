@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>KUCCPS Cluster Points Calculator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input, button { margin: 5px; padding: 8px; width: 300px; }
+    .result { font-weight: bold; margin-top: 20px; }
+    footer { margin-top: 40px; text-align: center; font-size: 14px; }
+    footer a { color: blue; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <h1>KUCCPS Cluster Points Calculator</h1>
+  <p>Calculate your KUCCPS cluster points for the 2024/2025 academic year. Fill in the grades as required below:</p>
+
+  <form id="calculatorForm">
+    <h3>Step 1: Enter the grades of the best 4 performed subjects relevant to the related course</h3>
+    <label>Subject 1 Grade (e.g., Mathematics): </label>
+    <input type="number" id="subject1" placeholder="Enter grade out of 12" required><br>
+    
+    <label>Subject 2 Grade: </label>
+    <input type="number" id="subject2" placeholder="Enter grade out of 12" required><br>
+    
+    <label>Subject 3 Grade: </label>
+    <input type="number" id="subject3" placeholder="Enter grade out of 12" required><br>
+    
+    <label>Subject 4 Grade: </label>
+    <input type="number" id="subject4" placeholder="Enter grade out of 12" required><br>
+    
+    <h3>Step 2: Enter Total Points for Your Best Eight Subjects (t)</h3>
+    <label>Total Points (Sum of Best 8 Subjects, out of 96): </label>
+    <input type="number" id="bestEight" placeholder="Enter total points out of 96" required><br>
+    
+    <button type="button" onclick="calculateClusterPoints()">Calculate</button>
+  </form>
+
+  <h2 class="result" id="result"></h2>
+
+  <footer>
+    <p>Developed by <strong>Victor Otieno</strong></p>
+    <p>Contact me for any questions:</p>
+    <p>WhatsApp: <a href="https://wa.me/254790231190" target="_blank">0790231190</a></p>
+  </footer>
+
+  <script>
+    function calculateClusterPoints() {
+      const r = parseInt(document.getElementById("subject1").value) +
+                parseInt(document.getElementById("subject2").value) +
+                parseInt(document.getElementById("subject3").value) +
+                parseInt(document.getElementById("subject4").value);
+      const t = parseInt(document.getElementById("bestEight").value);
+      const R = 48; // Max points for 4 subjects
+      const T = 96; // Max points for 8 subjects
+      
+      const C = Math.sqrt((r / R) * (t / T)) * 48;
+      document.getElementById("result").innerText = `Your Cluster Points: ${C.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
